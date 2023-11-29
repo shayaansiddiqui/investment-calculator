@@ -5,9 +5,9 @@ import CalculationTable from "./components/CalculationTable";
 
 function App() {
 	const [userInput, setUserInput] = useState({
-		initialInvestment: 10000,
-		annualInvestment: 1200,
-		expectedReturn: 6,
+		initialInvestment: 140000,
+		annualInvestment: 5000,
+		expectedReturn: 4.5,
 		duration: 10
 	});
 
@@ -33,11 +33,14 @@ function App() {
 			};
 		});
 	}
+
+	const inputIsValid = userInput.duration >=1;
 	return (
 		<>
 			<Header/>
 			<UserInput investment={userInput} onUpdate={handleChange}/>
-			<CalculationTable data={userInput}/>
+			{inputIsValid && <CalculationTable data={userInput}/>}
+			{!inputIsValid && <p className={'center'}>Please enter a duration greater than 0</p>}
 		</>
 	)
 }
