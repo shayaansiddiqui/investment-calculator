@@ -1,6 +1,7 @@
 import Header from './components/Header'
 import UserInput from "./components/UserInput";
 import {useState} from "react";
+import CalculationTable from "./components/CalculationTable";
 
 function App() {
 	const [initialInvestment, setInitialInvestment] = useState({
@@ -27,7 +28,7 @@ function App() {
 		<>
 			<Header/>
 			<UserInput init={initialInvestment} onUpdate={investmentHandler}/>
-			<span>Table Calculations</span>
+			<CalculationTable data={initialInvestment}/>
 		</>
 	)
 }

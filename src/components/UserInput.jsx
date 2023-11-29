@@ -28,7 +28,7 @@ const UserInput = ({init, onUpdate}) => {
 			<div className={'input-group'}>
 				<div>
 					<label>Initial Investment</label>
-					<input type={'number'} name={'initalInvestment'} defaultValue={investment.initialInvestment} onChange={event => onInvestmentUpdate(event)} required/>
+					<input type={'number'} name={'initialInvestment'} defaultValue={investment.initialInvestment} onChange={event => onInvestmentUpdate(event)} required/>
 				</div>
 				<div>
 					<label>Annual Investment</label>
