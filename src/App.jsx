@@ -4,31 +4,40 @@ import {useState} from "react";
 import CalculationTable from "./components/CalculationTable";
 
 function App() {
-	const [initialInvestment, setInitialInvestment] = useState({
-		initialInvestment: 100,
-		annualInvestment: 200,
-		expectedReturn: 3.3,
-		duration: 4
+	const [userInput, setUserInput] = useState({
+		initialInvestment: 10000,
+		annualInvestment: 1200,
+		expectedReturn: 6,
+		duration: 10
 	});
 
-	const investmentHandler = (investment) => {
-		console.log("state: " + initialInvestment);
-		console.log("initialInvestment: " + investment.initialInvestment);
-		console.log("annualInvestment: " + investment.annualInvestment);
-		console.log("expectedReturn: " + investment.expectedReturn);
-		console.log("duration: " + investment.duration);
-		setInitialInvestment((prevInvestment) => {
+	// const investmentHandler = (investment) => {
+	// 	console.log("state: " + userInput);
+	// 	console.log("initialInvestment: " + investment.initialInvestment);
+	// 	console.log("annualInvestment: " + investment.annualInvestment);
+	// 	console.log("expectedReturn: " + investment.expectedReturn);
+	// 	console.log("duration: " + investment.duration);
+	// 	setUserInput(prevInvestment => {
+	// 		return {
+	// 			...prevInvestment,
+	// 			investment
+	// 		}
+	// 	});
+	// }
+
+	const handleChange = (inputIdentifier, newValue) => {
+		setUserInput(previousUserInput => {
 			return {
-				...prevInvestment,
-				investment
-			}
+				...previousUserInput,
+				[inputIdentifier]: newValue
+			};
 		});
 	}
 	return (
 		<>
 			<Header/>
-			<UserInput init={initialInvestment} onUpdate={investmentHandler}/>
-			<CalculationTable data={initialInvestment}/>
+			<UserInput investment={userInput} onUpdate={handleChange}/>
+			<CalculationTable data={userInput}/>
 		</>
 	)
 }
